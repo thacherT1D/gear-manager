@@ -1,21 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+// import { StyleSheet, Text, View } from 'react-native';
+import { Container, Header, Left, Body, Right, Title, Content, Text } from 'native-base';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-export default class App extends React.Component {
+import reducers from './reducers';
+
+class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Container>
+        <Header>
+          <Left />
+          <Body>
+            <Title>Gear Manager</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content padder>
+          <Provider store={createStore(reducers)}>
+            <Text>Hello there gear junkie!</Text>
+          </Provider>
+        </Content>
+      </Container>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
