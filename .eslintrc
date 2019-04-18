@@ -1,6 +1,8 @@
 {
   "extends": "rallycoding",
   "rules": {
-    "no-multiple-empty-lines": "off"
+    "no-multiple-empty-lines": "off",
+    "arrow-body-style": "off",
+    "react/jsx-closing-bracket-location": "off"
     }
 }
