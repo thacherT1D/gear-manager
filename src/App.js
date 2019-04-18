@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Container, Content, Text } from 'native-base';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
 
 import AppHeader from './components/AppHeader';
 import SignInForm from './components/SignInForm';
@@ -24,11 +25,13 @@ class App extends Component {
   }
 
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
     return (
       <Container>
         <AppHeader />
         <Content padder>
-          <Provider store={createStore(reducers)}>
+          <Provider store={store}>
             <View style={styles.title}>
               <Text style={styles.text}>Hello there gear junkie!</Text>
             </View>

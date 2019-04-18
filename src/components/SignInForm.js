@@ -9,7 +9,7 @@ import {
   Text
 } from 'native-base';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged } from '../actions';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 class SignInForm extends Component {
   onEmailChange(text) {
@@ -18,6 +18,11 @@ class SignInForm extends Component {
 
   onPasswordChange(text) {
     this.props.passwordChanged(text);
+  }
+
+  onButtonPress() {
+      const { email, password } = this.props;
+      this.props.loginUser({ email, password });
   }
 
   render() {
@@ -40,7 +45,9 @@ class SignInForm extends Component {
              />
           </Item>
         </Form>
-        <Button info block style={[styles.button]}>
+        <Button info block
+          style={[styles.button]}
+          onPress={this.onButtonPress.bind(this)}>
           <Text>Sign In</Text>
         </Button>
       </View>
@@ -64,4 +71,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { emailChanged, passwordChanged })(SignInForm);
+export default connect(mapStateToProps, {
+  emailChanged, passwordChanged, loginUser
+})(SignInForm);
