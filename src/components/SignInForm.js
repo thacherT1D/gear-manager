@@ -15,7 +15,7 @@ class SignInForm extends Component {
           </Item>
         </Form>
         <Button block style={[styles.button]}>
-          <Text>Button</Text>
+          <Text>Sign In</Text>
         </Button>
       </Content>
     );

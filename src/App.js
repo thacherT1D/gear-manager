@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Container, Header, Left, Body, Right, Title, Content, Text } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import firebase from 'firebase';
 
+import AppHeader from './components/AppHeader';
 import SignInForm from './components/SignInForm';
 import reducers from './reducers';
 
@@ -25,13 +26,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Header>
-          <Left />
-          <Body>
-            <Title>Gear Manager</Title>
-          </Body>
-          <Right />
-        </Header>
+        <AppHeader />
         <Content padder>
           <Provider store={createStore(reducers)}>
             <View style={styles.title}>
