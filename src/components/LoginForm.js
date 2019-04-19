@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 
-class SignInForm extends Component {
+class LoginForm extends Component {
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -101,4 +101,4 @@ const mapStateToProps = ({ auth }) => {
 
 export default connect(mapStateToProps, {
   emailChanged, passwordChanged, loginUser
-})(SignInForm);
+})(LoginForm);

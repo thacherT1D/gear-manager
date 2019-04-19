@@ -7,7 +7,7 @@ import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 
 import AppHeader from './components/AppHeader';
-import SignInForm from './components/SignInForm';
+import LoginForm from './components/LoginForm';
 import reducers from './reducers';
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
             <View style={styles.title}>
               <Text style={styles.text}>Hello there gear junkie!</Text>
             </View>
-            <SignInForm />
+            <LoginForm />
           </Provider>
         </Content>
       </Container>
