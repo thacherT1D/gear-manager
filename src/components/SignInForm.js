@@ -6,7 +6,8 @@ import {
   Input,
   Label,
   Button,
-  Text
+  Text,
+  Spinner
 } from 'native-base';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
@@ -23,6 +24,29 @@ class SignInForm extends Component {
   onButtonPress() {
       const { email, password } = this.props;
       this.props.loginUser({ email, password });
+  }
+
+  renderError() {
+    if (this.props.error) {
+      return (
+        <View style={{ backgroundColor: 'white' }}>
+          <Text style={styles.errorTextStyle}>{this.props.error}</Text>
+        </View>
+      );
+    }
+  }
+
+  renderButton() {
+    if (this.props.loading) {
+      return <Spinner />;
+    }
+    return (
+      <Button info block
+        style={[styles.button]}
+        onPress={this.onButtonPress.bind(this)}>
+        <Text>Sign In</Text>
+      </Button>
+    );
   }
 
   render() {
@@ -45,11 +69,11 @@ class SignInForm extends Component {
              />
           </Item>
         </Form>
-        <Button info block
-          style={[styles.button]}
-          onPress={this.onButtonPress.bind(this)}>
-          <Text>Sign In</Text>
-        </Button>
+
+        {this.renderError()}
+
+        {this.renderButton()}
+
       </View>
     );
   }
@@ -61,14 +85,18 @@ const styles = StyleSheet.create({
   },
   title: {
     justifyContent: 'center'
+  },
+  errorTextStyle: {
+    fontSize: 20,
+    color: 'red',
+    alignSelf: 'center'
   }
 });
 
-const mapStateToProps = state => {
-  return {
-    email: state.auth.email,
-    password: state.auth.password
-  };
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
+
+  return { email, password, error, loading };
 };
 
 export default connect(mapStateToProps, {
