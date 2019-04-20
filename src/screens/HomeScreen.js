@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 
-import AppHeader from '../components/AppHeader';
 import LoginForm from '../components/LoginForm';
 import reducers from '../reducers';
 
@@ -29,7 +28,7 @@ class HomeScreen extends Component {
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
 
     return (
 
@@ -40,7 +39,9 @@ class HomeScreen extends Component {
               <Text style={styles.text}>Hello there gear junkie!</Text>
             </View>
             <LoginForm />
-            <Button block warning
+            <Button
+              block
+              warning
               style={styles.button}
               onPress={() => navigate('GearList')}>
               <Text>Go to Gear List</Text>
