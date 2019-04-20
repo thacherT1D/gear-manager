@@ -1,7 +1,15 @@
-import { AppRegistry } from 'react-native';
+import React from 'react';
 
-import App from './src/App';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-AppRegistry.registerComponent('gear-manager', () => App);
+import HomeScreen from './src/screens/HomeScreen';
+import GearListScreen from './src/screens/GearListScreen';
+
+const MainNavigator = createStackNavigator({
+  Home: { screen: HomeScreen },
+  GearList: { screen: GearListScreen }
+});
+
+const App = createAppContainer(MainNavigator);
 
 export default App;
