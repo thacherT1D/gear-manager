@@ -1,45 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
-import {
-  Container,
-  Content
-} from 'native-base';
-import AppHeader from '../components/AppHeader';
-
-
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
-
-  render() {
-    return (
-      <Container>
-        <AppHeader />
-
-        <Content padder>
-        </Content>
-      </Container>
-    );
-  }
-}
-
 import React, { Component } from 'react';
-
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-
+import { StyleSheet, View } from 'react-native';
 import { Container, Content, Text, Button } from 'native-base';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
-import {
-  createAppContainer,
-  createStackNavigator,
-  StackActions,
-  NavigationActions,
-  AppNavigator
-} from 'react-navigation';
 
 import LoginForm from '../components/LoginForm';
 import reducers from '../reducers';
@@ -67,11 +32,23 @@ class HomeScreen extends Component {
 
     return (
 
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <Text>Hello</Text>
-      </View>
-
+      <Container>
+        <Content padder>
+          <Provider store={store}>
+            <View style={styles.title}>
+              <Text style={styles.text}>Hello there gear junkie!</Text>
+            </View>
+            <LoginForm />
+            <Button
+              block
+              warning
+              style={styles.button}
+              onPress={() => navigate('GearList')}>
+              <Text>Go to Gear List</Text>
+            </Button>
+          </Provider>
+        </Content>
+      </Container>
     );
   }
 }
