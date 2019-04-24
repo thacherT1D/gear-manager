@@ -13,4 +13,7 @@ To move `App.js` file into `src` folder, the `node_modules > expo > AppEntry.js`
 [ X ]--> find real way to address this that doesn't involve editing a file in a node_module
 [  ] Add storybook and storybook-deployer
 
+Next time:
+try using redux-form
+
 splash screen icon credit: [Freepik](https://www.freepik.com/) from [www.flaticon.com](https://www.flaticon.com/), licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
